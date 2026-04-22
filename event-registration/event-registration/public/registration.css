@@ -1,0 +1,497 @@
+body {
+    font-family: 'Oswald', Arial, sans-serif; /* Make sure the font is consistent */
+    background: linear-gradient(
+        to bottom right, 
+        rgba(221, 66, 195, 0.8), /* Pink */
+        rgba(232, 255, 80, 0.8), /* Light Yellow */
+        rgba(255, 255, 255, 0.8), /* White */
+        rgba(221, 66, 195, 0.8), /* Pink */
+        rgba(255, 255, 255, 0.8), /* Black */
+        rgba(232, 255, 80, 0.8) /* Light Yellow */
+    );
+    
+    background-size: 400% 400%; /* Make the gradient larger to allow smooth transitions */
+    animation: gradientAnimation 8s ease infinite; /* Apply animation for smooth movement */
+    background-position: 0% 50%; /* Start the gradient from left */
+    color: rgb(254, 254, 254); /* Light text color */
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 100vh; /* Ensure the body takes full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%; /* Start from left */
+    }
+    50% {
+        background-position: 100% 50%; /* Move to the right */
+    }
+    100% {
+        background-position: 0% 50%; /* Return to the left */
+    }
+}
+
+h1 {
+    font-family: Oswald, Arial;
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap; /* Prevents text from breaking into multiple lines */
+}
+
+h1 span.highlight {
+    font-family: Oswald, Arial;
+    color: #D7FD35; /* Neon Green for accents */
+    display: inline; /* Make sure the span stays inline with the text */
+}
+
+
+h2, h3, p {
+    color: #ffffff;
+    font-family: jost;
+}
+
+button {
+    background-color: #D7FD35; /* Neon Green */
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+.navigation a {
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.navigation span {
+    margin-right: 15px;
+    color: #000000;
+    font-size: 24px;
+}
+
+.category-selection, .package-selection, .payment-section, .confirmation {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px solid #D7FD35;
+    border-radius: 10px;
+    background-color: #222;
+    align-items: center;
+    width: 100%;
+}
+
+.registration-form {
+    margin: 0 auto; /* Center the form */
+    padding: 20px;
+    border: 2px solid #D7FD35;
+    border-radius: 10px;
+    background-color: #222;
+    width: 100%;
+    height: 100%;
+}
+
+.centered-image {
+    display: block;
+    margin-top: -15px ; 
+    margin-left: 110px;
+    margin-right: 80px;
+    margin-bottom: -110px;
+    width: 70%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.package {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.package img {
+    width: 700px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#route-image{
+    
+    width: 80%; /* Adjust size (use percentage or pixel value) */
+    height: auto; /* Maintain aspect ratio */
+    
+    /* Adjust position */
+    margin-top: 20px; /* Space from top */
+    margin-left: 100px; /* Space from left */
+    margin-right: 100px; /* Space from right */
+    margin-bottom: 80px; /* Space from bottom */
+    
+    /* Optional: If you want to use positioning */
+    position: relative; /* or absolute if you want to place it more freely */
+    top: 20px; /* Move image down by 10px */
+    right: 25px; /* Move image right by 20px */
+}
+
+
+/* Updated keyframe animation for only availability moving */
+@keyframes colorfulBounce {
+    0% {
+        color: #D7FD35; /* Neon Green */
+        transform: translateY(0); /* Starting position */
+    }
+    25% {
+        color: #FF6F61; /* Orange */
+        transform: translateY(-5px); /* Move slightly up */
+    }
+    50% {
+        color: #6A5ACD; /* Purple */
+        transform: translateY(0); /* Back to original position */
+    }
+    75% {
+        color: #FF1493; /* Deep Pink */
+        transform: translateY(5px); /* Move slightly down */
+    }
+    100% {
+        color: #D7FD35; /* Neon Green */
+        transform: translateY(0); /* Back to original position */
+    }
+}
+
+/* Apply animation to availability text */
+.availability {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    animation: colorfulBounce 2s infinite; /* Apply animation */
+}
+
+.price {
+    color: #ffffff; /* Gold color for a luxurious feel */
+    font-size: 32px; /* Larger font size */
+    font-weight: bold; /* Bold font to make it stand out */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Soft shadow for a 3D effect */
+    margin-bottom: 10px;
+    letter-spacing: 1px; /* Adds some space between characters for an elegant look */
+}
+
+.package-description {
+    color: #D7FD35;
+}
+
+/* Form styling */
+label {
+    text-align: left;
+    margin-left: 20px;
+    display: block; /* Ensures the label appears on its own line */
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 30px 20px 0px; /* Adjusted margin for left and right */
+    border: 1px solid #D7FD35; 
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+.package-summary {
+    font-size: 16px;
+    color: #D7FD35;
+}
+
+.feedback {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-family: jost;
+}
+
+/* Modal for Size Guide */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #222;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #D7FD35;
+    border-radius: 10px;
+    width: 50%;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #000000;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.size-guide-img {
+    width: 100%;
+    height: auto;
+}
+
+/* General Styling for Payment Section */
+.payment-section {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    border: 2px solid #D7FD35; /* Highlight border */
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    margin: 30px auto; /* Center the section */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Title Styling */
+.payment-section h2 {
+    color: #D7FD35; /* Highlight color for title */
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Paragraph Styling */
+.payment-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.payment-section p strong {
+    color: #D7FD35; /* Highlight key labels */
+    font-weight: bold;
+}
+
+/* Button Styling */
+.payment-section button {
+    background-color: #D7FD35;
+    color: #000; /* Black text on buttons */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.payment-section button:hover {
+    background-color: #fff; /* Hover effect for button */
+    color: #000; /* Black text on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Highlight Important Message */
+.payment-section p:last-of-type {
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 2px dashed #D7FD35;
+}
+
+/* Style for Important Message label */
+.important-label {
+    color: red; /* Red color for "Important Message" */
+    font-weight: bold; /* Bold text */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .payment-section {
+        width: 90%;
+    }
+
+    .payment-section h2 {
+        font-size: 20px;
+    }
+
+    .payment-section p {
+        font-size: 14px;
+    }
+
+    .payment-section button {
+        font-size: 14px;
+    }
+}
+
+/* Receipt Upload Section Box Styling */
+.receipt-upload-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000; /* Black background */
+    padding: 20px;
+}
+
+.receipt-box {
+    background-color: #222; /* White box */
+    border: 3px solid #D7FD35; /* Green border */
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.receipt-box h2 {
+    font-size: 24px;
+    color: #ffffff; /* Black text */
+    margin-bottom: 20px;
+}
+
+.receipt-box h2 .highlight {
+    color: #D7FD35; /* Green highlight */
+}
+
+.receipt-box p {
+    font-size: 16px;
+    color: #ffffff; /* Subtle text color */
+    margin-bottom: 20px;
+}
+
+.receipt-box .receipt-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #D7FD35;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#receipt-file {
+    border: 2px solid #D7FD35;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 80%;
+    margin: 10px 0;
+    text-align: center;
+}
+
+#receipt-file:focus {
+    outline: none;
+    border: 2px solid #000;
+    font-size: 20px;
+}
+
+.btn-submit, .btn-back {
+    margin-top: 20px;
+    background-color: #D7FD35;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 85%; /* Buttons take full width */
+}
+
+.btn-submit:hover, .btn-back:hover {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #D7FD35;
+}
+
+.btn-back {
+    background-color: white;
+    color: #000;
+    margin-top: 5px;
+    border: 2px solid #000;
+    width: 85%; /* Buttons take full width */
+}
+
+.btn-back:hover {
+    background-color: #D7FD35;
+    color: #000;
+}
+
+
+a.btn.btn-home {
+    background-color: #D7FD35;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+    text-decoration: none;  
+}
+
+a.btn.btn-home:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.05); 
+}
+
+.btn-container {
+    padding: 20px;
+}

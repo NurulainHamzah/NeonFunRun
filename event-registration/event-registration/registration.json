@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "phone": "01165646046",
+        "tshirt_size": "M",
+        "dietary": "Vegetarian",
+        "event": "5 km",
+        "package": "Basic",
+        "cost": 20
+    }
+]

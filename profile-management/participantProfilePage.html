@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Neon FunRun</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/flag-icon-css/css/flag-icons.min.css">
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/chartist/chartist.min.css">
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/css/vertical-light-layout/style.css">
+    <link rel="shortcut icon" href="../event-info/images/cropped_image.png" />
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <style>
+      #sidebar {
+        background-color: black;
+      }
+      .absolute-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .nav-item .menu-title {
+        margin-top: 10px;
+      }
+      .nav-item .menu-icon {
+        margin-right: 10px;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      .table .font-weight-bold {
+        width: 200px;
+        background-color: #f8f9fa;
+      }
+      .table td {
+        background-color: #ffffff;
+      }
+      .table-responsive {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+      }
+      .column-left {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        overflow: hidden;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+      }
+      .column-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .column-right {
+        flex: 1;
+      }
+      .column-right table {
+        width: 100%;
+      }
+      .column-right td {
+        padding: 10px;
+        border: none;
+      }
+      .detail-section {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 28px;
+      }
+      .route-container,
+      .package-container {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .route-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+      .package-container {
+        text-align: center;
+      }
+      .row.mt-4 {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+      .row.mt-3 {
+        text-align: center;
+      }
+      .btn-checkin {
+        background-color: #FFFF33; 
+        color: black; 
+        border: none; 
+        padding: 10px 20px; 
+        font-size: 16px; 
+        border-radius: 5px; 
+        transition: all 0.3s ease; 
+        margin-top:10px;
+      }
+
+      .btn-checkin:hover {
+        background-color: #ffffff; 
+        color: black; 
+      }
+      .edit-input {
+        display: none;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ddd;
+      }
+      .edit-btn,
+      .save-btn,
+      .cancel-btn {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <!-- Header -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex align-items-center" style="background-color: black;">
+            <a class="navbar-brand brand-logo" href="../index.html"></a>
+            <img src="../NeonFunRunAdmin/src/assets/images/NeonFunRunlogo.jpg" alt="logo" class="logo-dark" style="width: 200px; height: auto;" />
+          </a>
+        </div>
+      
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+          <h5 class="mb-0 font-weight-medium d-none d-lg-flex" style="font-weight: 900;">PARTICIPANT PROFILE PAGE</h5>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle ms-2" src="../NeonFunRunAdmin/src/assets/images/faces/pic-2.png" alt="Profile image"> 
+                <span class="font-weight-normal"> Nur Iffah Izzah </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="../NeonFunRunAdmin/src/assets/images/faces/pic-2.png" alt="Profile image">
+                  <p class="mb-1 mt-3">Nur Iffah Izzah</p>
+                  <p class="font-weight-light text-muted mb-0">iffah@gmail.com</p>
+                </div>
+                <a class="dropdown-item" href="../index.html"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+      </nav>      
+      
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item navbar-brand-mini-wrapper">
+              <a class="nav-link navbar-brand brand-logo-mini" href="../index.html"><img src="../NeonFunRunAdmin/src/assets/images/NeonFunRunlogo.jpg" alt="logo" /></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span class="menu-title">Dashboard</span>
+                <i class="icon-chart menu-icon" style="color: #D7FD35;"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="row">
+                <h4 class="card-title mb-sm-0">Participant Management</h4>
+              </div>
+              <div class="table-responsive border rounded p-1">
+                <div class="column-left">
+                  <img src="../NeonFunRunAdmin/src/assets/images/faces/pic-2.png" alt="Profile Image">
+                </div>
+                <div class="column-right">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td class="font-weight-bold">Name</td>
+                        <td><span id="name">Nur Iffah Izzah</span><input type="text" id="edit-name" class="edit-input" value="Nur Iffah Izzah"></td>
+                      </tr>
+                      <tr>
+                        <td class="font-weight-bold">Identification Number</td>
+                        <td><span id="id">010203-14-0102</span><input type="text" id="edit-id" class="edit-input" value="010203-14-0102"></td>
+                      </tr>
+                      <tr>
+                        <td class="font-weight-bold">Matric Number</td>
+                        <td><span id="matric">155789</span><input type="text" id="edit-matric" class="edit-input" value="155789"></td>
+                      </tr>
+                      <tr>
+                        <td class="font-weight-bold">Phone Number</td>
+                        <td><span id="phone">0123456789</span><input type="text" id="edit-phone" class="edit-input" value="0123456789"></td>
+                      </tr>
+                      <tr>
+                        <td class="font-weight-bold">Email</td>
+                        <td><span id="email">iffah@gmail.com</span><input type="text" id="edit-email" class="edit-input" value="iffah@gmail.com"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button class="btn edit-btn" onclick="editProfile()">Edit</button>
+                  <button class="btn save-btn" onclick="saveProfile()" style="display:none;">Save</button>
+                  <button class="btn cancel-btn" onclick="cancelEdit()" style="display:none;">Cancel</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row detail-section">
+              <h4 class="card-title mb-sm-0">Detail</h4>
+            </div>
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="route-container">
+                  <h5>Route</h5>
+                  <img src="../event-info/images/5km-route.png" alt="Route Image">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="package-container">
+                  <h5>Package</h5>
+                  <p>5KM Neon FunRun.</p>
+                </div>
+                <a href="#" class="btn btn-checkin">Check In</a>
+              </div>
+            </div>
+          </div>
+          
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 Neon FunRun. All rights reserved. <a href="#"> Terms of use</a><a href="#">Privacy Policy</a></span>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function editProfile() {
+        // Show the input fields and hide the text
+        document.getElementById("edit-name").style.display = "inline-block";
+        document.getElementById("edit-id").style.display = "inline-block";
+        document.getElementById("edit-matric").style.display = "inline-block";
+        document.getElementById("edit-phone").style.display = "inline-block";
+        document.getElementById("edit-email").style.display = "inline-block";
+        
+        document.getElementById("name").style.display = "none";
+        document.getElementById("id").style.display = "none";
+        document.getElementById("matric").style.display = "none";
+        document.getElementById("phone").style.display = "none";
+        document.getElementById("email").style.display = "none";
+
+        // Show save and cancel buttons
+        document.querySelector(".save-btn").style.display = "inline-block";
+        document.querySelector(".cancel-btn").style.display = "inline-block";
+        document.querySelector(".edit-btn").style.display = "none";
+      }
+
+      function saveProfile() {
+        // Update the profile with input field values
+        document.getElementById("name").innerText = document.getElementById("edit-name").value;
+        document.getElementById("id").innerText = document.getElementById("edit-id").value;
+        document.getElementById("matric").innerText = document.getElementById("edit-matric").value;
+        document.getElementById("phone").innerText = document.getElementById("edit-phone").value;
+        document.getElementById("email").innerText = document.getElementById("edit-email").value;
+
+        // Hide input fields and show the text again
+        document.getElementById("edit-name").style.display = "none";
+        document.getElementById("edit-id").style.display = "none";
+        document.getElementById("edit-matric").style.display = "none";
+        document.getElementById("edit-phone").style.display = "none";
+        document.getElementById("edit-email").style.display = "none";
+        
+        document.getElementById("name").style.display = "inline-block";
+        document.getElementById("id").style.display = "inline-block";
+        document.getElementById("matric").style.display = "inline-block";
+        document.getElementById("phone").style.display = "inline-block";
+        document.getElementById("email").style.display = "inline-block";
+
+        // Hide save and cancel buttons, show edit button again
+        document.querySelector(".save-btn").style.display = "none";
+        document.querySelector(".cancel-btn").style.display = "none";
+        document.querySelector(".edit-btn").style.display = "inline-block";
+      }
+
+      function cancelEdit() {
+        // Hide input fields and show the text again
+        document.getElementById("edit-name").style.display = "none";
+        document.getElementById("edit-id").style.display = "none";
+        document.getElementById("edit-matric").style.display = "none";
+        document.getElementById("edit-phone").style.display = "none";
+        document.getElementById("edit-email").style.display = "none";
+        
+        document.getElementById("name").style.display = "inline-block";
+        document.getElementById("id").style.display = "inline-block";
+        document.getElementById("matric").style.display = "inline-block";
+        document.getElementById("phone").style.display = "inline-block";
+        document.getElementById("email").style.display = "inline-block";
+
+        // Hide save and cancel buttons, show edit button again
+        document.querySelector(".save-btn").style.display = "none";
+        document.querySelector(".cancel-btn").style.display = "none";
+        document.querySelector(".edit-btn").style.display = "inline-block";
+      }
+    </script>
+  </body>
+</html>
+

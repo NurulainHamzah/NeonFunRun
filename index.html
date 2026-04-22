@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USM - NEON FUNRUN 2024</title>
+    <link rel="icon" href="event-info/images/cropped_image.png" type="image/png">
+
+    <link rel="stylesheet" href="event-info/style.css">
+    <link rel="stylesheet" href="event-info/custom.css">
+
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <!-- Font Awesome -->
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Jost' rel='stylesheet'>
+</head>
+
+<body>
+    <!-- Sticky Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top py-2">
+        <div class="container px-2">
+            <a class="navbar-brand" href="index.html">
+                <img src="event-info/images/logo-neon-fun-run-1.png" class="d-inline-block align-top" alt="logo">
+            </a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto" id="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#event-details">Event Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faqs">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="login-signup">
+                    <a class="btn btn-login mr-1" href="profile-management/login.html">Login</a>
+                    <a class="btn btn-outline-light btn-register" href="event-registration/event-registration/public/Registration.html">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section text-center">
+        <div>
+        <img src="event-info/images/hero-banner.png" alt="Fun Run Banner">
+        <a href="event-registration/event-registration/public/Registration.html" class="cta-btn">Register Now!</a> 
+        </div> 
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event-details" class="event-details-section py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <!-- Left Welcome Section -->
+                <div class="col-md-5">
+                    <img src="event-info/images/graphic-box.png" alt="Welcome" class="img-fluid mb-3"><br>
+                    <small class="text-uppercase">Welcome to Neon FunRun!</small>
+                    <h2 class="my-3">Experience the Fun in Neon!</h2>
+                    <p class="mb-4">Join us for an exhilarating night filled with lights, laughter, and running.</p>
+                    <hr>
+                    <!-- <button class="btn btn-yellow mt-3">Find Out More</button> -->
+                    <button class="btn btn-neon" onclick="scrollToCountdown()">Find Out More</button>
+                </div>
+
+                <!-- Right Countdown -->
+                <div class="col countdown-section">
+                <h2>Countdown to the Neon FunRun</h2>
+                <div id="countdown" class="countdown">
+                    <div class="time" id="days"></div>
+                    <div class="time" id="hours"></div>
+                    <div class="time" id="minutes"></div>
+                    <div class="time" id="seconds"></div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Information -->
+    <section id="event-details" class="event-overview-section py-5">
+        <div class="parallax-background"></div>
+        <div class="container">
+            <div class="event-overview section">
+                <h2>Event Overview</h2>
+                <div class="event-details">
+                    <div class="event-item">
+                        <h3>Date</h3>
+                        <p>Saturday, December 28, 2024</p>
+                    </div>
+                    <div class="event-item">
+                        <h3>Location</h3>
+                        <p>USM Main Campus, Gelugor, Penang</p>
+                    </div>
+                    <div class="event-item">
+                        <h3>Highlights</h3>
+                        <ul>
+                            <li>Glow in the Dark Run</li>
+                            <li>Live DJ & Music</li>
+                            <li>Food Trucks & Refreshments</li>
+                            <li>Prizes for Best Costumes</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="event-description text-left">
+                    Join us for an unforgettable night filled with fun, fitness, and neon lights! The Neon Fun Run is perfect for all ages and skill levels. Don’t miss out on the excitement!
+                </p>
+                <!-- <button class="btn btn-neon">Register Now</button> -->
+                <a class="btn btn-register-event" href="event-registration/event-registration/public/Registration.html">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="event-details" class="py-5">
+        <div class="container">
+            <div class="packages container my-5">
+                <h2 class="mb-4">Packages Offered</h2>
+                <div class="row">
+                    <div class="col-md-4 package-card text-center">
+                        <div class="card">
+                            <img src="event-info/images/Basic.png" alt="Package 1" class="card-img-top clickable-image package-image p-3" onclick="openModal('event-info/images/Basic.png')">
+                            <div class="card-body mt-0">Basic</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 package-card text-center">
+                        <div class="card">
+                            <img src="event-info/images/Standard.png" alt="Package 2" class="card-img-top clickable-image package-image p-3" onclick="openModal('event-info/Standard.png')">
+                            <div class="card-body mt-0">Standard</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 package-card text-center">
+                        <div class="card">
+                            <img src="event-info/images/Premium.png" alt="Package 3" class="card-img-top clickable-image package-image p-3" onclick="openModal('event-info/images/Premium.png')">
+                            <div class="card-body mt-0">Premium</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Running Route -->
+    <section id="event-details" class="py-5 running-route">
+        <div class="container">
+            <!-- <div class="running-route"> -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <small>Category: 5km and 7km Runs</small>
+                        <h3>Running Route</h3>
+                        <p class="mb-4">Experience the beautiful scenery of the park.</p>
+                        <p>
+                            <i class="fa-solid fa-person-running"></i>
+                            <i class="fa-solid fa-person-running"></i>
+                            <i class="fa-solid fa-person-running"></i>
+                        </p>
+                    </div>
+                    <div class="col-md-7 route-images text-center">
+                        <img src="event-info/images/5km-route.png" alt="5km Route" class="img-fluid clickable-image route-image" onclick="openModal('event-info/images/5km-route.png')">
+                        <img src="event-info/images/7km-route.png" alt="7km Route" class="img-fluid clickable-image route-image" onclick="openModal('event-info/images/7km-route.png')">
+                    </div>
+                </div>
+            <!-- </div> -->
+
+        </div>
+    </section>
+
+    <!-- Fullscreen Viewer -->
+    <div id="image-viewer" class="hidden">
+        <span id="close-btn">&times;</span>
+        <img id="full-image" src="" alt="Fullscreen">
+    </div>
+    
+    <!-- FAQs Section -->
+    <section id="faqs" class="faq py-5">
+        <div class="container">
+        <div class="text-center mb-4">
+            <small class="text-uppercase">FAQs</small>
+            <h2 class="text-black">Frequently Asked Questions</h2>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <!-- FAQ Item 1 -->
+            <div class="accordion-item bg-white border-0">
+            <h2 class="accordion-header" id="faqHeading1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                What is the Neon FunRun?
+                </button>
+            </h2>
+            <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-black">
+                Neon FunRun is an exciting night run event that combines fitness and fun with vibrant neon lights.
+                </div>
+            </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="accordion-item bg-white border-0">
+            <h2 class="accordion-header" id="faqHeading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                Who can participate?
+                </button>
+            </h2>
+            <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-black">
+                Anyone aged 12 and above can participate. All fitness levels are welcome!
+                </div>
+            </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="accordion-item bg-white border-0">
+            <h2 class="accordion-header" id="faqHeading3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                What should I wear?
+                </button>
+            </h2>
+            <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-black">
+                Participants are encouraged to wear neon or glow-in-the-dark clothing to fully enjoy the event's theme.
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="contact-us-section section py-5">
+        <div class="container contact-container">
+        <div class="row">
+            <!-- Map -->
+            <div class="map col-md-6 px-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.407356542235!2d100.29665567727572!3d5.354643180762625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac1a96f010e97%3A0x8b91d5d092b91828!2sSchool%20of%20Computer%20Sciences%2C%20USM!5e0!3m2!1sen!2smy!4v1732386057430!5m2!1sen!2smy" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <!-- Contact Form -->
+            <div class="col-md-6 p-5 contact-form text-white">
+            <small class="text-uppercase">Contact Us</small>
+            <h2 class="mb-4">Get in Touch</h2>
+            <div class="row list-contact mb-4">
+                <div class="col contact"><span> Phone: </span>
+                    <div class="address">+1 234 567 890</div>
+                </div>
+                <div class="col contact"><span> Email: </span>
+                    <div class="address">info@neonfunrun.com</div>
+                </div>
+            </div>
+            <form id="contactForm">
+                <div class="row">
+                    <div class="form-group col mb-4">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group col mb-4">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" id="mesage" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn send-btn">Send Message</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="d-flex flex-column flex-sm-row justify-content-between px-5 border-top">
+            <p>© 2024 Neon FunRun. All rights reserved.</p>
+    
+            <ul class="social-network" id="sub-footer">
+                <li><a class="social-button facebook" href="https://www.facebook.com/" data-placement="top" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a class="social-button twitter" href="https://www.twitter.com/" data-placement="top" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                <li><a class="social-button instagram" href="https://www.instagram.com/" data-placement="top" title="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a class="social-button youtube" href="https://www.youtube.com/" data-placement="top" title="Youtube"><i class="fa-brands fa-youtube"></i></a></li>
+            </ul>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="event-info/script.js"></script>
+
+    <!-- Bootstrap JS -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+    <!-- Popper JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4c8b93f5bf.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

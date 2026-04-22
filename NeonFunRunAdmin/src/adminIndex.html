@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Neon FunRun</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="assets/vendors/chartist/chartist.min.css">
+    <!-- End plugin css for this page -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/vertical-light-layout/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/pageicon.jpg" />
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    
+    <style>
+      #sidebar {
+        background-color: black;
+      }
+      .doughnut-chart-height {
+        position: relative;
+        height: 250px;
+      }
+      .absolute-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .chart-card {
+        padding: 20px;
+        text-align: center;
+      }
+  
+    /* Common class for both Event Details and Volunteer Card */
+    .info-card {
+      background-color: #f9f9f9; /* Same background color for both cards */
+      padding: 20px;
+      height: 400px; /* Ensure both cards have the same height */
+    }
+
+    .event-details, .volunteer-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    
+    /* Styling for the info card */
+    .info-card {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    /* Center-align the logo and add some spacing */
+    .event-logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+    }
+
+    /* Card title styling */
+    .card-title {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .event-detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* Countdown alignment */
+    .countdown {
+      font-weight: bold;
+      color: #FF5733;
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .info-card {
+        padding: 15px;
+      }
+
+      .event-logo {
+        width: 100px;
+      }
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <!-- Header-->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex align-items-center" style="background-color: black;">
+          <a class="navbar-brand brand-logo" href="adminIndex.html">
+            <img src="assets/images/NeonFunRunlogo.jpg" alt="logo" class="logo-dark" style="width: 200px; height: auto;" />
+          </a>
+        </div>
+      
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+          <h5 class="mb-0 font-weight-medium d-none d-lg-flex" style="font-weight: 900;">DASHBOARD</h5>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle ms-2" src="assets/images/faces/admin.png" alt="Profile image"> 
+                <span class="font-weight-normal"> Nur Fatihah Azizi </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="assets/images/faces/admin.png" alt="Profile image">
+                  <p class="mb-1 mt-3">Nur Fatihah Azizi</p>
+                  <p class="font-weight-light text-muted mb-0">fatihah@gmail.com</p>
+                </div>
+                <a class="dropdown-item" href="../../index.html"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+
+      </nav>      
+      
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!--sidebar-->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item navbar-brand-mini-wrapper">
+              <a class="nav-link navbar-brand brand-logo-mini" href="adminIndex.html"><img src="assets/images/NeonFunRunlogo.jpg" alt="logo" /></a>
+            </li>
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="profile-image">
+                  <img class="img-xs rounded-circle" src="assets/images/faces/admin.png" alt="profile image">
+                  <div class="dot-indicator bg-success"></div>
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">Nur Fatihah Azizi</p>
+                  <p class="designation">Administrator</p>
+                </div>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="adminIndex.html">
+                <span class="menu-title">Dashboard</span>
+                <i class="icon-chart menu-icon" style="color: #D7FD35;"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="participantmanagement.html">
+                <span class="menu-title">Participant Management</span>
+                <i class="icon-people menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="scheduleEvent.html">
+                <span class="menu-title">Schedule & Event</span>
+                <i class="icon-event menu-icon"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="volunteermanagement.html">
+                <span class="menu-title">Volunteer Management</span>
+                <i class="icon-organization menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+              <div class="row">
+                <!-- Total Participants by Category Chart -->
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Total Participants by Category</h5>
+                      <p class="text-muted">Overview of total participants based on their chosen route</p>
+                      <canvas id="routeParticipantsBarChart" height="150"></canvas>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Total Collected Kits Chart -->
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Number of Participants Collect Kits</h5>
+                      <div class="aligner-wrapper py-3">
+                        <div class="doughnut-chart-height">
+                          <canvas id="sessionsDoughnutChart" height="250"></canvas>
+                        </div>
+                        <div class="wrapper d-flex flex-column justify-content-center align-items-center absolute-center">
+                          <h2 class="text-center mb-0 font-weight-bold" id="collectedCount">0</h2>
+                          <small class="text-center text-muted font-weight-semibold mb-0">Total Collected</small>
+                        </div>
+                      </div>
+                      
+                      <div class="wrapper mt-4 d-flex flex-wrap align-items-cente">
+                        <div class="d-flex">
+                          <span class="square-indicator bg-danger ms-2"></span>
+                          <p class="mb-0 ms-2">Collected</p>
+                        </div>
+                        <div class="d-flex">
+                          <span class="square-indicator bg-success ms-2"></span>
+                          <p class="mb-0 ms-2">Not Collected</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                            
+              <div class="row">
+                <!-- Event details -->
+                <div class="col-md-6">
+                  <div class="info-card event-details">
+                    <!-- Logo -->
+                    <div class="logo text-center">
+                      <img src="assets/images/logo.jpg" alt="Neon FunRun Logo" class="event-logo">
+                    </div>
+                    <h5 class="card-title text-center">Neon FunRun</h5>
+                    <div class="event-info">
+                      <!-- Event Date with Calendar Icon -->
+                      <p class="event-detail">
+                        <i class="fas fa-calendar-alt"></i> <strong>Event Date:</strong> 1 January 2025
+                      </p>
+                      <!-- Place -->
+                      <p class="event-detail">
+                        <i class="fas fa-map-marker-alt"></i> <strong>Place:</strong> The Bricks USM
+                      </p>
+                    </div>
+                    <div class="countdown text-center" id="countdown"></div>
+                  </div>
+                </div>              
+              
+                <!--Number of Volunteers-->
+                <div class="col-md-6">
+                  <div class="info-card volunteer-card">
+                    <h5 class="card-title">Number of Volunteers</h5>
+                    <table class="table table-bordered">
+                      <thead style="text-align: center;">
+                        <tr>
+                          <th>Task</th>
+                          <th>Number of Volunteers</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Event Planning</td>
+                          <td>7</td>
+                        </tr>
+                        <tr>
+                          <td>Registration Team</td>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <td>Check-In Team</td>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <td>Kit Distribution Team</td>
+                          <td>8</td>
+                        </tr>
+                        <tr>
+                          <td>Decoration Team</td>
+                          <td>15</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr />
+                    <p><strong>Total Volunteers: </strong><span id="total-volunteers">0</span></p>
+                  </div>
+                </div>
+
+                <!-- JavaScripts -->
+                <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                  const collected = 50; // Collected kits
+                  const notCollected = 250; // Not collected kits
+
+                  // Update Total Collected
+                  document.getElementById("collectedCount").textContent = collected;
+
+                  // Doughnut Chart
+                  const ctx = document.getElementById("sessionsDoughnutChart").getContext("2d");
+                  new Chart(ctx, {
+                    type: "doughnut",
+                    data: {
+                      labels: ["Collected", "Not Collected"],
+                      datasets: [
+                        {
+                          data: [collected, notCollected],
+                          backgroundColor: ["#4caf50", "#f44336"],
+                          borderWidth: 1.5,
+                        },
+                      ],
+                    },
+                    options: {
+                      responsive: true,
+                      plugins: {
+                        legend: {
+                          display: true,
+                          position: "bottom",
+                        },
+                      },
+                      cutout: "70%",
+                    },
+                  });
+
+
+                  // Data for the bar chart (example data)
+                  const routeParticipantsData = {
+                    registered: 300,  // Total registered participants
+                    fiveKm: 180,      // Participants in 5km route
+                    sevenKm: 120,     // Participants in 7km route
+                  };
+
+                  // Bar Chart Configuration
+                  const routeBarChartCtx = document.getElementById("routeParticipantsBarChart").getContext("2d");
+                  new Chart(routeBarChartCtx, {
+                    type: "bar",
+                    data: {
+                      labels: ["Registered", "5 Kilometer Route", "7 Kilometer Route"],
+                      datasets: [
+                        {
+                          label: "Number of Participants",
+                          data: [routeParticipantsData.registered, routeParticipantsData.fiveKm, routeParticipantsData.sevenKm],
+                          backgroundColor: ["#2196f3", "#4caf50", "#ff9800"],
+                          borderColor: ["#1976d2", "#388e3c", "#f57c00"],
+                          borderWidth: 1,
+                        },
+                      ],
+                    },
+                    options: {
+                      responsive: true,
+                      plugins: {
+                        legend: {
+                          display: false, // Hide legend
+                        },
+                      },
+                      scales: {
+                        x: {
+                          title: {
+                            display: true,
+                            text: "Categories",
+                            color: "#616161",
+                            font: {
+                              size: 14,
+                              weight: "bold",
+                            },
+                          },
+                        },
+                        y: {
+                          title: {
+                            display: true,
+                            text: "Number of Participants",
+                            color: "#616161",
+                            font: {
+                              size: 14,
+                              weight: "bold",
+                            },
+                          },
+                          ticks: {
+                            beginAtZero: true,
+                          },
+                        },
+                      },
+                    },
+                  });
+
+                  // Set the event date
+                  var eventDate = new Date("January 1, 2025 00:00:00").getTime();
+
+                  // Update the countdown every 1 second
+                  var countdownFunction = setInterval(function() {
+                    // Get the current date and time
+                    var now = new Date().getTime();
+
+                    // Find the distance between now and the event date
+                    var distance = eventDate - now;
+
+                    // Time calculations for days, hours, minutes, and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Display the result in the element with id="countdown"
+                    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+                    // If the countdown is finished, write some text
+                    if (distance < 0) {
+                      clearInterval(countdownFunction);
+                      document.getElementById("countdown").innerHTML = "The event has started!";
+                    }
+                  }, 1000);
+
+                  // Calculating the total number of volunteers
+                  var taskData = [
+                    { task: "Event Planning", volunteers: 7 },
+                    { task: "Registration Team", volunteers: 5 },
+                    { task: "Check-In Team", volunteers: 5 },
+                    { task: "Kit Distribution Team", volunteers: 8 },
+                    { task: "Decoration Team", volunteers: 15 }
+                  ];
+
+                  // Calculate the total number of volunteers
+                  var totalVolunteers = taskData.reduce(function(accum, task) {
+                    return accum + task.volunteers;
+                  }, 0);
+
+                  // Display the total number of volunteers in the card
+                  document.getElementById('total-volunteers').innerText = totalVolunteers;
+                </script>
+                <!-- content-wrapper ends -->
+
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                  <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 Neon FunRun. All rights reserved. <a href="#"> Terms of use</a><a href="#">Privacy Policy</a></span>
+                  </div>
+                </footer>
+        <!-- partial -->
+        </div>
+      <!-- page-body-wrapper ends -->
+      </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="assets/vendors/moment/moment.min.js"></script>
+    <script src="assets/vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="assets/vendors/chartist/chartist.min.js"></script>
+    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

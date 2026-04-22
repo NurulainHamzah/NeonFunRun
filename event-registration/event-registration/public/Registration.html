@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Jost' rel='stylesheet'>
+        <link rel="stylesheet" href="registration.css">
+
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Navigation Directory -->
+        <div class="navigation">
+            <span id="category-step" onclick="goBackToCategory()">Category Event</span>
+            <span id="current-step">Step 1: Select Event</span>
+        </div>
+
+        <!-- Category Selection -->
+        <div class="category-selection">
+            <!-- Image to display based on selection -->
+            <img id="event-image" src="NEON FUN.png" alt="Registration Image" class="centered-image">
+            
+            <h1><span class="highlight">Select</span> Your Event</h1>
+
+            <!-- Event Dropdown -->
+            <img id="route-image" src="Route 5KM.png" alt="Route Image" class="centered-image" margin="200px">
+            <select id="event-category" onchange="updateImage()">
+                <option value="5km" selected>5 km</option>
+                <option value="7km">7 km</option>
+            </select>
+            
+            <!-- Navigation Button -->
+            <button onclick="goToPackageSelection()">Next</button>
+        </div>
+
+
+        <!-- Package Selection -->
+        <div class="package-selection" id="package-selection" style="display:none;">
+            <h2><span class="highlight">Select</span> Your Package</h2>
+            <div class="package">
+                <h3>Basic Package</h3>
+                <img src="Basic Running Kit Package.jpeg" alt="Basic Package">
+                <p class="package-description">Includes registration fee, Race Bib,
+                    Wristband,
+                    Neon Stick and
+                    Drawstring bag</p></p>
+                <p class="availability">Only <span>15 slots left!</span></p> 
+                <p class="price">RM 20</p>
+                <button onclick="selectPackage('Basic', 20)">Select Basic Package</button>
+            </div>
+            <div class="package">
+                <h3>Standard Package</h3>
+                <img src="Standard Running Kit Package.jpeg" alt="Standard Package">
+                <p class="package-description">Includes registration fee, Race Bib,
+                    Wristband,
+                    Neon Stick,
+                    Drawstring bag and T-shirt</p></p>
+                <p class="availability">Only <span>10 slots left!</span></p>
+                <p class="price">RM 40</p>
+                <button onclick="selectPackage('Standard', 40)">Select Standard Package</button>
+            </div>
+            <div class="package">
+                <h3>Premium Package</h3>
+                <img src="Premium Running Kit Package .jpeg" alt="Premium Package">
+                <p class="package-description">Includes registration fee, Race Bib,
+                    Wristband,
+                    Neon Stick,
+                    Drawstring bag,
+                    T-shirt and Medal</p>
+                <p class="availability">Only <span>5 slots left!</span></p>
+                <p class="price">RM 60</p>
+                <button onclick="selectPackage('Premium', 60)">Select Premium Package</button>
+            </div>
+            <button onclick="goBackToCategory()">Back to Event Selection</button>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="registration-form" id="registration-form" style="display:none;">
+            <h2><span class="highlight">Registration</span> Form</h2>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="required" placeholder="Enter your name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="required" placeholder="Enter your email">
+            
+            <label for="password">Create Password:</label>
+            <input type="password" id="password" class="required" placeholder="Create a password">
+            <div id="password-feedback" class="feedback"></div>
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" class="required" placeholder="Confirm your password">
+            <div id="confirm-password-feedback" class="feedback"></div>
+           
+            <label for="phone">Phone:</label>
+            <input type="number" id="phone" class="required" placeholder="Enter your phone number">
+           
+            <label for="tshirt-size">T-Shirt Size:</label>
+            <select id="tshirt-size" class="required">
+                <option value="XXS">XXS</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="XXXL">XXXL</option>
+            </select>
+            <!-- Buttons to Show Size Guides -->
+            <button type="button" id="men-size-guide-btn">Men Size Guide</button>
+            <button type="button" id="women-size-guide-btn">Women Size Guide</button>
+
+            <!-- Modal for Men Size Guide -->
+            <div id="men-size-guide-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('men-size-guide-modal')">&times;</span>
+                    <img src="Men Size Guide.jpg" alt="Men's Size Guide" class="size-guide-img">
+                </div>
+            </div>
+
+            <!-- Modal for Women Size Guide -->
+            <div id="women-size-guide-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('women-size-guide-modal')">&times;</span>
+                    <img src="Women Size Guide.png" alt="Women's Size Guide" class="size-guide-img">
+                </div>
+            </div>
+            <label for="dietary">Dietary Preferences:</label>
+            <input type="text" id="dietary" placeholder="Any dietary preferences? (Optional)">
+
+            <button onclick="goToPayment()">Next</button>
+            <button onclick="goBackToPackage()">Back to Package Selection</button>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="payment-section" id="payment-section" style="display:none;">
+            <h2><span class="highlight">Order</span> Summary</h2>
+            <p><strong>Event:</strong> <span id="selected-event">5 km</span></p>
+            <p><strong>Package:</strong> <span id="selected-package">Basic</span></p>
+            <p><strong>Dietary Preferences:</strong> <span id="selected-dietary">N/A</span></p>
+            <p><strong>Total Cost:</strong> <span id="total-cost">RM 0</span></p>
+            <p>
+                <strong><span class="important-label">Important Message:</span></strong> 
+                Please review all your details before proceeding with payment.
+            </p>
+            <button onclick="processPayment()">Proceed to Payment</button>
+            <button onclick="goBackToRegistration()">Back to Registration</button>
+        </div>
+
+        <!-- Receipt Upload Section -->
+        <!-- <div class="receipt-upload-box" id="receipt-upload" style="display:none;"> -->
+
+            <div class="receipt-box" id="receipt-upload" style="display:none;">
+                <!-- Payment Information Section -->
+                <div class="payment-info" id="payment-info">
+                    <h3><span class="highlight">Payment</span> Information</h3>
+                <p><strong>Maybank:</strong> </p>
+                    <p><strong>Bank Account Number:</strong> XXXX-XXXX-XXXX</p>
+                    <p><strong>Organization:</strong> Neon Fun Run</p>
+                </div>
+                <hr>
+
+                <h2><span class="highlight">Upload</span> Payment Receipt</h2>
+                <p>Please upload your payment receipt (PDF, JPEG, PNG, or JPG).</p>
+                <form id="receipt-form">
+                    <label for="receipt-file" class="receipt-label">Upload Receipt:</label>
+                    <input type="file" id="receipt-file" accept=".pdf,.jpeg,.png,.jpg" required>
+                    <button type="button" onclick="submitReceipt()" class="btn-submit">Submit Receipt</button>
+                </form>
+                <button onclick="goBackToPayment()" class="btn-back">Back to Order Summary</button>
+            </div>
+        <!-- </div> -->
+
+        <!-- Confirmation -->
+        <div class="confirmation" id="confirmation" style="display:none;">
+            <h2><span class="highlight">Registration</span> Confirmed</h2>
+            <p>Thank you for registering!</p>
+            <!-- <button onclick="goBackToCategory()">Back to Event Selection</button> -->
+             <div class="btn-container">
+                <a class="btn btn-home" href="../../../index.html">Back to Home Page</a>
+             </div>
+        </div>
+
+        <script src="registration.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon FunRun - Login</title>
+  <link rel="stylesheet" href="../NeonFunRunAdmin/src/assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../index.html">
+  <link rel="shortcut icon" href="../event-info/images/cropped_image.png" />
+  <style>
+    body {
+      background-color: #000; 
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    .login-container {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 8px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .login-header img {
+      width: 100px;
+      height: auto;
+    }
+    .login-header h2 {
+      margin: 10px 0;
+      color: #D7FD35;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      box-sizing: border-box;
+    }
+    .role-selection {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+    }
+    .role-selection button {
+      flex: 1;
+      margin: 0 5px;
+      padding: 10px;
+      border: none;
+      background-color: #D7FD35;
+      color: black;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #D7FD35;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <img src="../NeonFunRunAdmin/src/assets/images/NeonFunRunlogo.jpg" alt="Neon FunRun Logo">
+      <h2>Login</h2>
+    </div>
+    <div class="role-selection">
+      <button id="participantRole" onclick="selectRole('participant')">Participant</button>
+      <button id="adminRole" onclick="selectRole('admin')">Admin</button>
+    </div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+      <p class="error" id="errorMessage"></p>
+    </form>
+  </div>
+
+  <script>
+    let role = 'participant'; // Default role
+
+    function selectRole(selectedRole) {
+      role = selectedRole;
+      document.getElementById('errorMessage').textContent = '';
+      alert(`Role selected: ${role}`);
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (role === 'participant') {
+        // Hardcoded participant credentials
+        if (email === 'iffah@gmail.com' && password === '123asd@@') {
+          alert('Participant login successful!');
+          window.location.href = 'participantProfilePage.html'; // Participant Profile Page
+        } else {
+          document.getElementById('errorMessage').textContent = 'Invalid participant credentials';
+        }
+      } else if (role === 'admin') {
+        // Placeholder for admin logic
+        if (email === 'fatihah@gmail.com' && password === '12345'){
+          alert('Admin login successful!');
+          // window.location.href = 'adminIndex.html'; // Homepage for admin
+          window.location.href = '../NeonFunRunAdmin/src/adminIndex.html'; // Homepage for admin
+        } else {
+          document.getElementById('errorMessage').textContent = 'Invalid admin credentials';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

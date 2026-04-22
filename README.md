@@ -13,7 +13,6 @@ Neon FunRun is a web-based event management system developed to streamline the o
 * Participant profile with QR code check-in
 * Admin dashboard for managing events and users
 * Event information module (details, countdown, FAQ)
-* Inquiry submission system
 
 ---
 
@@ -29,9 +28,10 @@ Neon FunRun is a web-based event management system developed to streamline the o
 
 ```
 neon-funrun/
+├── assets/images            # System Screenshots
 ├── event-info/              # Event details & UI
 ├── event-registration/      # Registration logic & server
-├── admin-dashboard/         # Admin panel
+├── NeonFunRunAdmin/         # Admin panel
 ├── profile-management/      # User profile & login
 └── index.html               # Main entry point
 ```
@@ -56,13 +56,6 @@ Open `index.html` in browser
 cd event-registration
 node server.js
 ```
-
----
-
-## 🎯 Purpose
-
-This project was developed as part of a Web Engineering course to demonstrate full-stack development, system design, and event management solutions.
-
 ---
 
 ## 📸 System Screenshots

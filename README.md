@@ -71,13 +71,13 @@ This project was developed as part of a Web Engineering course to demonstrate fu
 <img src="assets/images/homepage.png" width="800"/>
 
 ### 📝 Registration Page
-<img src="assets/images/registration.png" width="800"/>
-
-### 🎟️ Package Selection
-<img src="assets/images/package.png" width="800"/>
+<img src="assets/images/registration-form.png" width="800"/>
 
 ### 📊 Admin Dashboard
 <img src="assets/images/admin-dashboard.png" width="800"/>
+
+### 👤 User Profile Page
+<img src="assets/images/participant-profile.png" width="800"/>
 
 ---
 
